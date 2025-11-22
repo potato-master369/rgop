@@ -1,34 +1,27 @@
-# RGOP
-A stupidly simple framebuffer library for Roblox (R).
+# Bad Apple for Roblox
 
----
-## About
-I initially made this library to play Bad Apple!! in Roblox in a more standard way ([Video](https://youtu.be/k4tFC69_uIE). In doing so, I have come to realise more stupid uses for this. Who knows.
+## Prerequisites
+- ffmpeg
+- Python
+- PIL
+- at least ~300MB free space
+  
+## Running
 
-Although this thing is pretty simple, and not a new concept, I hope it'll give you a bit of inspiration - maybe you are also going to play Bad Apple!! on something else. Or perhaps, you'll write something bigger and more ridiculous.
+Firstly, obtain the Bad Apple!! video (length should be 3:51)
 
-Well, use this for whatever the hell you want and I don't care.
+Then, run the following:
+```
+mkdir src
+chmod a+x ./genf.sh
+./genf.sh
+python genlua.py
+printf "\n" >> out.lua # maybe a new line wasn't added?
+cat addontoback.lua >> out.lua
+```
 
----
-## FAQ
+And, add rgop.lua to `ReplicatedStorage > RGOP` (ModuleScript). Add out.lua to `ServerScriptService > Script` (Script).
 
-> WHO THE HELL IS USING THIS???
+Create a part named "MyClickablePart" (Don't ask about the naming), and give it a child of a `ClickDetector` (named "ClickDetector").
 
-I have no clue. Feel free to.
-
-> Can I use this in \[your new game]?
-
-Sure. Go ahead.
-
----
-## Features
-
-- Initialisation of a framebuffer with specified size (X, Y), pixel size, X and Y offsets, and an option to use the Z axis instead of X.
-- PlotPixeL(), which takes a `Color3` input and plots a pixel of the framebuffer.
-- Modification of the framebuffer possible as `fb[x][y].Color3 = ...`
-
-## Acknowledgements
-
-- Myself, for making this
-- Roblox, for being annoying enough not to have a feature for this
-- The creators of Bad Apple!! for giving me this stupid idea
+When you run the game as a test, click MyClickablePart and it should run.
